@@ -92,4 +92,6 @@ body {
 }
 .page-links {
   text-align: center;
+  font-family: Nunito;
+  font-size: small;
 }
