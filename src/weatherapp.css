@@ -1,0 +1,92 @@
+body {
+  background: radial-gradient(
+    circle at 5.3% 17.2%,
+    rgb(255, 208, 253) 0%,
+    rgb(255, 237, 216) 90%
+  );
+}
+.container {
+  padding: 70px 70px;
+}
+.card {
+  border-width: 3px !important;
+  border-color: rgb(237, 247, 254) !important;
+}
+.card-body {
+  margin: 40px 40px 0px 40px !important;
+}
+.search-city {
+  border-color: rgb(255, 201, 227);
+  border-radius: 10px;
+  width: 100%;
+  font-family: Nunito;
+  font-weight: 500;
+}
+.search-btn {
+  color: rgb(224, 224, 198) !important;
+  background-color: #fff;
+  border-color: rgb(255, 201, 227);
+  border-radius: 10px;
+  font-family: Nunito !important;
+  font-weight: 500;
+}
+.btn-light {
+  font-size: x-small !important;
+  font-family: Nunito !important;
+  border-radius: 10px;
+}
+.main-image {
+  width: 200px;
+}
+.weather-icons {
+  width: 70px;
+}
+.city {
+  font-size: 18px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-family: Nunito;
+  font-weight: 500;
+}
+.degree {
+  font-size: 12px;
+  text-align: left;
+  font-family: Nunito;
+  font-weight: 500;
+}
+.divider {
+  font-size: 10px;
+  text-align: left;
+}
+.body-text {
+  font-size: 16px;
+  font-family: Nunito;
+  font-weight: 500;
+}
+.align-right {
+  text-align: end;
+  padding: 0 !important;
+}
+.align-left {
+  text-align: start;
+  padding: 0 !important;
+}
+.temperature {
+  font-size: 80px;
+  font-weight: 700;
+  color: rgb(96, 103, 109);
+  font-family: Nunito;
+  font-weight: 500;
+}
+.day-text {
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+.text-center {
+  padding: 0px 30px 50px 30px !important;
+  font-family: Nunito;
+  font-weight: 500;
+}
+.current-location {
+  font-size: x-small;
+}

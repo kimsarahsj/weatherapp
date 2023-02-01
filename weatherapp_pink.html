@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="src/weatherapp.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/053d005e8b.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <!-- Start container-->
+    <div class="container">
+      <!--Start Card-->
+      <div class="card">
+        <div class="card-body">
+          <!-- Start top search-->
+
+          <div class="row">
+            <div class="col-8">
+              <input
+                type="text"
+                placeholder="enter city"
+                class="form-control"
+                style="border-color: pink; border-width: 2px"
+                id="search-city"
+              />
+            </div>
+
+            <div class="col-4">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                style="border-color: pink; border-width: 2px"
+              >
+                search
+              </button>
+
+              <!--Start Line Break-->
+              <div class="row">
+                <div class="col">
+                  <br />
+                </div>
+              </div>
+              <!--End Line Break-->
+            </div>
+          </div>
+          <!-- End top search-->
+          <div class="row">
+            <div class="col-8 current-location" id="currentLocation">
+              <button type="button" class="btn btn-light" id="locationBtn">
+                <i class="fa-solid fa-location-dot"></i> current location
+              </button>
+            </div>
+          </div>
+          <!-- Start today, date, and time-->
+          <div class="row">
+            <div class="col-3 body-text">today's weather</div>
+            <div class="row">
+              <div class="col-4 body-text">
+                <span id="day"></span> | <span id="month">jan</span>
+                <span id="date"></span> | <span id="hour">9</span>:<span
+                  id="minute"
+                  >00</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- End today, date, and time-->
+          <!--Start Line Break-->
+          <div class="row">
+            <div class="col">
+              <br />
+            </div>
+          </div>
+          <!--End Line Break-->
+          <!-- Start City-->
+          <div class="row">
+            <div class="col-8 city" id="location">Atlanta</div>
+          </div>
+          <!-- End City-->
+          <!-- Start Forecast-->
+          <div class="row">
+            <div class="col-3 body-text" id="condition">clear</div>
+          </div>
+          <!-- End Forecast-->
+          <!--Start Degree Conversion-->
+          <span class="degree" id="fahrenheit-link"><a href="#">F</a></span>
+          <span class="divider">| </span>
+          <span class="degree" id="celsius-link"><a href="#">C</a></span>
+          <!--Start End Conversion-->
+          <!-- Start today's weather information-->
+          <div class="row">
+            <div class="col-3 temperature" id="temperature">
+              48<span id="degree">°F</span>
+            </div>
+
+            <div class="col-5">
+              <img
+                src="images/sunnycloud.svg"
+                class="main-image"
+                id="todays-image"
+              />
+            </div>
+            <!-- Start weather details rows inside column-->
+            <div class="col-3">
+              <div class="row body-text align-right" id="high-temp">
+                High
+                <div class="col align-right" id="todays-high">56°</div>
+                <div class="col align-left" id="degree">F</div>
+              </div>
+              <div class="row body-text" id="low-temp">
+                Low
+                <div class="col align-right" id="todays-low">44°</div>
+                <div class="col align-left" id="degree">F</div>
+              </div>
+              <div class="row body-text" id="precip">
+                Precipitation
+                <div class="col">
+                  <span id="percent-precip">0</span> % &nbsp;
+                </div>
+              </div>
+            </div>
+            <!-- End weather details rows inside column-->
+          </div>
+          <!-- End today's weather informaion-->
+          <!-- Start next 5-days-->
+          <div class="five-day-forecast">
+            <div class="container text-center">
+              <div class="row row-cols-5">
+                <div class="col day-text" id="day-1-date">Sat</div>
+                <div class="col day-text" id="day-2-date">Sun</div>
+                <div class="col day-text" id="day-3-date">Mon</div>
+                <div class="col day-text" id="day-4-date">Tue</div>
+                <div class="col day-text" id="day-5-date">Wed</div>
+              </div>
+              <!-- End next 5-days-->
+              <!-- Start 5 day weather images-->
+              <div class="row">
+                <div class="col">
+                  <img
+                    src="images/raincloud.svg"
+                    class="weather-icons"
+                    id="day-1-image"
+                  />
+                </div>
+                <div class="col">
+                  <img
+                    src="images/sunny.svg"
+                    class="weather-icons"
+                    id="day-2-image"
+                  />
+                </div>
+                <div class="col">
+                  <img
+                    src="images/suncloud.svg"
+                    class="weather-icons"
+                    id="day-3-image"
+                  />
+                </div>
+                <div class="col">
+                  <img
+                    src="images/smilecloud.svg"
+                    class="weather-icons"
+                    id="day-4-image"
+                  />
+                </div>
+                <div class="col">
+                  <img
+                    src="images/thundercloud.svg"
+                    class="weather-icons"
+                    id="day-5-image"
+                  />
+                </div>
+              </div>
+              <!-- End 5 day weather images-->
+              <!-- Start 5 highs and lows-->
+              <div class="row" row-col-5>
+                <div class="col body-text">
+                  <span id="day-1-high">62°</span>/<span id="day-2-low"
+                    >42°</span
+                  >
+                </div>
+                <div class="col body-text">
+                  <span id="day-2-high">59°</span>/<span id="day-2-low">
+                    42°</span
+                  >
+                </div>
+                <div class="col body-text">
+                  <span id="day-3-high">54°</span>/<span id="day-3-low"
+                    >34°</span
+                  >
+                </div>
+                <div class="col body-text">
+                  <span id="day-4-high">57°</span>/<span id="day-4-low"
+                    >37°</span
+                  >
+                </div>
+                <div class="col body-text">
+                  <span id="day-5-high">61°</span>/<span id="day-5-low"
+                    >42°</span
+                  >
+                </div>
+              </div>
+              <!-- Start 5 highs and lows-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End Card-->
+    </div>
+    <!-- End container-->
+    <script src="src/weatherapp.js"></script>
+  </body>
+</html>
