@@ -6,7 +6,7 @@ body {
   );
 }
 .container {
-  padding: 70px 70px;
+  padding: 70px 12px 54px 12px;
 }
 .card {
   border-width: 3px !important;
@@ -89,4 +89,7 @@ body {
 }
 .current-location {
   font-size: x-small;
+}
+.page-links {
+  text-align: center;
 }
