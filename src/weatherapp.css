@@ -11,25 +11,25 @@ body {
 .card {
   border-width: 3px !important;
   border-color: rgb(237, 247, 254) !important;
+  border-radius: 20px !important;
+  max-width: 900px;
+  max-height: 670px;
+  display: block;
+  margin: 0 auto;
 }
 .card-body {
-  margin: 40px 40px 0px 40px !important;
+  margin: 25px 40px 0px 40px !important;
 }
-.search-city {
+#search-city {
   border-color: rgb(255, 201, 227);
   border-radius: 10px;
-  width: 100%;
+  width: 100% !important;
   font-family: Nunito;
   font-weight: 500;
+  font-size: small;
+  height: 60%;
 }
-.search-btn {
-  color: rgb(224, 224, 198) !important;
-  background-color: #fff;
-  border-color: rgb(255, 201, 227);
-  border-radius: 10px;
-  font-family: Nunito !important;
-  font-weight: 500;
-}
+
 .btn-light {
   font-size: x-small !important;
   font-family: Nunito !important;
@@ -42,13 +42,14 @@ body {
   width: 70px;
 }
 .city {
-  font-size: 18px;
+  font-size: 40px;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-family: Nunito;
   font-weight: 500;
+  color: rgb(96, 103, 109);
 }
-.degree {
+.degree-link {
   font-size: 12px;
   text-align: left;
   font-family: Nunito;
@@ -73,7 +74,6 @@ body {
 }
 .temperature {
   font-size: 80px;
-  font-weight: 700;
   color: rgb(96, 103, 109);
   font-family: Nunito;
   font-weight: 500;
@@ -94,4 +94,7 @@ body {
   text-align: center;
   font-family: Nunito;
   font-size: small;
+}
+.low-temp {
+  color: slategrey;
 }

@@ -46,7 +46,7 @@
             <div class="col-4">
               <button
                 type="button"
-                class="btn btn-outline-secondary"
+                class="btn btn-light"
                 style="border-color: pink; border-width: 2px"
               >
                 search
@@ -101,14 +101,16 @@
           </div>
           <!-- End Forecast-->
           <!--Start Degree Conversion-->
-          <span class="degree" id="fahrenheit-link"><a href="#">F</a></span>
+          <span class="degree-link" id="fahrenheit-link"
+            ><a href="#">F</a></span
+          >
           <span class="divider">| </span>
-          <span class="degree" id="celsius-link"><a href="#">C</a></span>
+          <span class="degree-link" id="celsius-link"><a href="#">C</a></span>
           <!--Start End Conversion-->
           <!-- Start today's weather information-->
           <div class="row">
             <div class="col-3 temperature" id="temperature">
-              48<span id="degree">°F</span>
+              48<span class="todays-temp" id="degree">°F</span>
             </div>
 
             <div class="col-5">
@@ -193,29 +195,43 @@
               <!-- Start 5 highs and lows-->
               <div class="row" row-col-5>
                 <div class="col body-text">
-                  <span id="day-1-high">62°</span>/<span id="day-2-low"
-                    >42°</span
-                  >
+                  <span id="day-1-high">62</span>° /<span
+                    class="low-temp"
+                    id="day-1-low"
+                    >42</span
+                  >°
                 </div>
                 <div class="col body-text">
-                  <span id="day-2-high">59°</span>/<span id="day-2-low">
-                    42°</span
+                  <span id="day-2-high">59</span>° /<span
+                    class="low-temp"
+                    id="day-2-low"
                   >
+                    42</span
+                  >°
                 </div>
                 <div class="col body-text">
-                  <span id="day-3-high">54°</span>/<span id="day-3-low"
-                    >34°</span
+                  <span id="day-3-high">54</span>° /<span
+                    class="low-temp"
+                    id="day-3-low"
                   >
+                    34</span
+                  >°
                 </div>
                 <div class="col body-text">
-                  <span id="day-4-high">57°</span>/<span id="day-4-low"
-                    >37°</span
+                  <span id="day-4-high">57</span>° /<span
+                    class="low-temp"
+                    id="day-4-low"
                   >
+                    37</span
+                  >°
                 </div>
                 <div class="col body-text">
-                  <span id="day-5-high">61°</span>/<span id="day-5-low"
-                    >42°</span
+                  <span id="day-5-high">61</span>° /<span
+                    class="low-temp"
+                    id="day-5-low"
                   >
+                    42</span
+                  >°
                 </div>
               </div>
               <!-- Start 5 highs and lows-->
