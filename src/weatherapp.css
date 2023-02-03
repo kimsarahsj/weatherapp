@@ -6,24 +6,24 @@ body {
   );
 }
 .container {
-  padding: 70px 12px 54px 12px;
+  padding: 65px 12px 49px 12px;
 }
 .card {
-  border-width: 3px !important;
-  border-color: rgb(237, 247, 254) !important;
-  border-radius: 20px !important;
+  border-width: 3px;
+  border-color: rgb(237, 247, 254);
+  border-radius: 20px;
   max-width: 900px;
   max-height: 670px;
   display: block;
   margin: 0 auto;
 }
 .card-body {
-  margin: 25px 40px 0px 40px !important;
+  margin: 25px 40px 0px 40px;
 }
 #search-city {
   border-color: rgb(255, 201, 227);
   border-radius: 10px;
-  width: 100% !important;
+  width: 100%;
   font-family: Nunito;
   font-weight: 500;
   font-size: small;
@@ -31,8 +31,8 @@ body {
 }
 
 .btn-light {
-  font-size: x-small !important;
-  font-family: Nunito !important;
+  font-size: x-small;
+  font-family: Nunito;
   border-radius: 10px;
 }
 .main-image {
@@ -42,19 +42,15 @@ body {
   width: 70px;
 }
 .city {
-  font-size: 40px;
+  font-size: 36px;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-family: Nunito;
   font-weight: 500;
   color: rgb(96, 103, 109);
+  line-height: 1;
 }
-.degree-link {
-  font-size: 12px;
-  text-align: left;
-  font-family: Nunito;
-  font-weight: 500;
-}
+
 .divider {
   font-size: 10px;
   text-align: left;
@@ -63,17 +59,18 @@ body {
   font-size: 16px;
   font-family: Nunito;
   font-weight: 500;
+  line-height: 1;
 }
 .align-right {
   text-align: end;
-  padding: 0 !important;
+  padding: 0;
 }
 .align-left {
   text-align: start;
-  padding: 0 !important;
+  padding: 0;
 }
 .temperature {
-  font-size: 80px;
+  font-size: 70px;
   color: rgb(96, 103, 109);
   font-family: Nunito;
   font-weight: 500;
@@ -83,7 +80,7 @@ body {
   text-transform: uppercase;
 }
 .text-center {
-  padding: 0px 30px 50px 30px !important;
+  padding: 0px 30px 50px 30px;
   font-family: Nunito;
   font-weight: 500;
 }
@@ -97,4 +94,9 @@ body {
 }
 .low-temp {
   color: slategrey;
+}
+.todays-temp {
+  position: relative;
+  font-size: 24px;
+  top: -34px;
 }
