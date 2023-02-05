@@ -68,6 +68,12 @@ function updateForecast(response) {
   todaysTemperature.innerHTML = `${temperature}°`;
   let condition = document.querySelector("#condition");
   condition.innerHTML = response.data.weather[0].description;
+  let feelsLikeTemp = document.querySelector("#feels-like");
+  feelsLikeTemp.innerHTML = `${Math.round(response.data.main.feels_like)}°`;
+  let highTemp = document.querySelector("#high-temp");
+  highTemp.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
+  let lowTemp = document.querySelector("#low-temp");
+  lowTemp.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
 }
 
 function searchForecast() {
@@ -81,6 +87,8 @@ function searchForecast() {
 
 let button = document.querySelector("button");
 button.addEventListener("click", searchForecast);
+//let button = document.querySelector("button");
+//button.addEventListener("click", searchForecast);
 //End search bar city search & change location on card
 
 //********BONUS - CURRENT LOCATION********
@@ -90,8 +98,6 @@ let long;
 function showPosition(position) {
   lat = position.coords.latitude;
   long = position.coords.longitude;
-  console.log(lat);
-  console.log(long);
   let apiKey = "fe1483f743b581b5520a1b725af03a49";
   let units = "imperial";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=${units}`;
@@ -104,14 +110,18 @@ function getCurrentPosition() {
 //Start update the current temperature with current temp data when current location button is clicked.
 function updatePage(response) {
   let temperature = Math.round(response.data.main.temp);
-  console.log(temperature);
-  console.log(response);
   let todaysTemperature = document.querySelector("#temperature");
   todaysTemperature.innerHTML = `${temperature}°`;
   let latLongCity = response.data.name;
   console.log(latLongCity);
   let currentLocation = document.querySelector("#location");
   currentLocation.innerHTML = `${latLongCity}`;
+  let feelsLikeTemp = document.querySelector("#feels-like");
+  feelsLikeTemp.innerHTML = `${Math.round(response.data.main.feels_like)}°`;
+  let highTemp = document.querySelector("#high-temp");
+  highTemp.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
+  let lowTemp = document.querySelector("#low-temp");
+  lowTemp.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
 }
 let currentCityBtn = document.querySelector("#locationBtn");
 currentCityBtn.addEventListener("click", getCurrentPosition);
