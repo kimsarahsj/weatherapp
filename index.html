@@ -36,27 +36,29 @@
       <div class="card">
         <div class="card-body">
           <!-- Start top search-->
-          <div class="row">
-            <div class="col-8">
-              <input
-                type="text"
-                placeholder="enter city"
-                class="form-control"
-                style="border-color: pink; border-width: 2px"
-                id="search-city"
-              />
-            </div>
+          <form id="search-form">
+            <div class="row">
+              <div class="col-8">
+                <input
+                  type="text"
+                  placeholder="enter city"
+                  class="form-control"
+                  style="border-color: pink; border-width: 2px"
+                  id="search-city"
+                />
+              </div>
 
-            <div class="col-4">
-              <button
-                type="button"
-                class="btn btn-outline-secondary"
-                style="border-color: pink; border-width: 2px"
-              >
-                search
-              </button>
+              <div class="col-4">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  style="border-color: pink; border-width: 2px"
+                >
+                  search
+                </button>
+              </div>
             </div>
-          </div>
+          </form>
           <!-- End top search-->
           <div class="row">
             <div class="col-8 current-location" id="currentLocation">
@@ -116,7 +118,7 @@
               <div class="row body-text align-right" id="feels-like-temp">
                 Feels Like
                 <div class="col align-right" id="feels-like">56°</div>
-                <div class="col align-left" id="degree"></div>
+                <div class="col align-center" id="degree"></div>
               </div>
 
               <div class="row body-text align-right">
