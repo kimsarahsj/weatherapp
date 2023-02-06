@@ -71,12 +71,10 @@
           <div class="row">
             <div class="col-3 body-text">today's weather</div>
             <div class="row">
-              <div class="col-4 body-text">
+              <div class="col-8 body-text">
                 <span id="day"></span> | <span id="month">jan</span>
-                <span id="date"></span> | <span id="hour">9</span>:<span
-                  id="minute"
-                  >00</span
-                >
+                <span id="date"></span> |<span class="subtle"> updated:</span>
+                <span id="hour">9</span>:<span id="minute">00</span>
               </div>
             </div>
           </div>
@@ -99,11 +97,21 @@
           </div>
           <!-- End Forecast-->
           <!-- Start today's weather information-->
-          <div class="row">
-            <div class="col-4 temperature" id="temperature">
-              48<span class="todays-temp" id="degree"
-                >°F |<a style="text-decoration: none" href="#">°C</a></span
-              >
+          <div class="row d-flex">
+            <div class="col-4">
+              <span class="temperature" id="temperature">48</span>
+              <span class="units">
+                <a
+                  href="#"
+                  id="farenheit-link"
+                  style="text-decoration: none"
+                  class="active"
+                  >°F</a
+                >
+                |<a style="text-decoration: none" href="#" id="celsius-link"
+                  >°C</a
+                >
+              </span>
             </div>
 
             <div class="col-5">

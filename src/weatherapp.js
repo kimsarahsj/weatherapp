@@ -56,28 +56,55 @@ todayMinute.innerHTML = `${minutes} ${ampm}`;
 //appended ampm to minutes since not defined in html
 //End get Minutes
 
+//Start setting temperature variables.
+let farenheit = 0;
+let celsius = 0;
+let feelsLikeF = 0;
+let feelsLikeC = 0;
+let highF = 0;
+let highC = 0;
+let lowF = 0;
+let lowC = 0;
+
 //********HOMEWORK - SEARCH RESULT********
 //Start search bar city search & change location on card
+
+//farenheit to celsius conversion calculation
+function ftoC(F) {
+  return (F - 32) * (5 / 9);
+}
+
 function updateForecast(response) {
+  //update location
   let searchInput = document.querySelector("#search-city");
   console.log(searchInput.value);
   let cityLocation = document.querySelector("#location");
-  cityLocation.innerHTML = `${searchInput.value}`;
-  let temperature = Math.round(response.data.main.temp);
+  cityLocation.innerHTML = response.data.name;
+  //update temperature
+  farenheit = Math.round(response.data.main.temp);
+  celsius = ftoC(farenheit);
   let todaysTemperature = document.querySelector("#temperature");
-  todaysTemperature.innerHTML = `${temperature}°`;
+  todaysTemperature.innerHTML = `${farenheit}`;
+  //update conditions
   let condition = document.querySelector("#condition");
   condition.innerHTML = response.data.weather[0].description;
+  //update feels like temperature
+  feelsLikeF = Math.round(response.data.main.feels_like);
+  feelsLikeC = ftoC(feelsLikeF);
   let feelsLikeTemp = document.querySelector("#feels-like");
-  feelsLikeTemp.innerHTML = `${Math.round(response.data.main.feels_like)}°`;
+  feelsLikeTemp.innerHTML = `${feelsLikeF}°`;
+  //update high temperature
+  highF = Math.round(response.data.main.temp_max);
+  highC = ftoC(highF);
   let highTemp = document.querySelector("#high-temp");
-  highTemp.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
+  highTemp.innerHTML = `${highF}°`;
+  //update low temperature
+  lowF = Math.round(response.data.main.temp_min);
   let lowTemp = document.querySelector("#low-temp");
-  lowTemp.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
+  lowTemp.innerHTML = `${lowF}°`;
 }
 
-function searchForecast() {
-  let city = document.querySelector("#search-city").value;
+function searchForecast(city) {
   let encoded = encodeURI(city); //will send the city to the url even if a two word city is entered
   let units = "imperial";
   let key = "fe1483f743b581b5520a1b725af03a49";
@@ -85,10 +112,17 @@ function searchForecast() {
   axios.get(apiUrl).then(updateForecast);
 }
 
+searchForecast("Atlanta"); //search on load
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#search-city");
+  searchForecast(cityInputElement.value);
+}
+
 let button = document.querySelector("button");
-button.addEventListener("click", searchForecast);
-//let button = document.querySelector("button");
-//button.addEventListener("click", searchForecast);
+button.addEventListener("click", handleSubmit);
+
 //End search bar city search & change location on card
 
 //********BONUS - CURRENT LOCATION********
@@ -126,3 +160,46 @@ function updatePage(response) {
 let currentCityBtn = document.querySelector("#locationBtn");
 currentCityBtn.addEventListener("click", getCurrentPosition);
 //End update the current temperature with current temp data when current location button is clicked.
+
+//Farenheit coversion link
+function displayFarenheitTemperature(event) {
+  event.preventDefault();
+  //add or remove active class
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(farenheit);
+
+  let feelsLikeTemp = document.querySelector("#feels-like");
+  feelsLikeTemp.innerHTML = `${Math.round(feelsLikeF)}°`;
+
+  let highTemp = document.querySelector("#high-temp");
+  highTemp.innerHTML = `${Math.round(highF)}°`;
+
+  let lowTemp = document.querySelector("#low-temp");
+  lowTemp.innerHTML = `${Math.round(lowF)}°`;
+}
+//Celsius coversion link
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  //add or remove active class
+  celsiusLink.classList.add("active");
+  farenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsius);
+
+  let feelsLikeTemp = document.querySelector("#feels-like");
+  feelsLikeTemp.innerHTML = `${Math.round(feelsLikeC)}°`;
+
+  let highTemp = document.querySelector("#high-temp");
+  highTemp.innerHTML = `${Math.round(highC)}°`;
+
+  let lowTemp = document.querySelector("#low-temp");
+  lowTemp.innerHTML = `${Math.round(lowC)}°`;
+}
+//when Farenheit or Celsius link is clicked, convert temp
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener("click", displayFarenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
