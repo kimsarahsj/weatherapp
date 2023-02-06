@@ -66,14 +66,12 @@ let highC = 0;
 let lowF = 0;
 let lowC = 0;
 
-//********HOMEWORK - SEARCH RESULT********
-//Start search bar city search & change location on card
-
 //farenheit to celsius conversion calculation
 function ftoC(F) {
   return (F - 32) * (5 / 9);
 }
-
+//********HOMEWORK - SEARCH RESULT********
+//Start search bar city search & change location on card
 function updateForecast(response) {
   //update location
   let searchInput = document.querySelector("#search-city");
@@ -88,11 +86,10 @@ function updateForecast(response) {
   //update conditions
   let condition = document.querySelector("#condition");
   condition.innerHTML = response.data.weather[0].description;
-  //update feels like temperature
-  feelsLikeF = Math.round(response.data.main.feels_like);
-  feelsLikeC = ftoC(feelsLikeF);
-  let feelsLikeTemp = document.querySelector("#feels-like");
-  feelsLikeTemp.innerHTML = `${feelsLikeF}°`;
+  //update wind speed
+  let windSpeed = document.querySelector("#wind-speed");
+  windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
+  console.log(windSpeed);
   //update high temperature
   highF = Math.round(response.data.main.temp_max);
   highC = ftoC(highF);
@@ -150,8 +147,6 @@ function updatePage(response) {
   console.log(latLongCity);
   let currentLocation = document.querySelector("#location");
   currentLocation.innerHTML = `${latLongCity}`;
-  let feelsLikeTemp = document.querySelector("#feels-like");
-  feelsLikeTemp.innerHTML = `${Math.round(response.data.main.feels_like)}°`;
   let highTemp = document.querySelector("#high-temp");
   highTemp.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
   let lowTemp = document.querySelector("#low-temp");
@@ -169,13 +164,8 @@ function displayFarenheitTemperature(event) {
   farenheitLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(farenheit);
-
-  let feelsLikeTemp = document.querySelector("#feels-like");
-  feelsLikeTemp.innerHTML = `${Math.round(feelsLikeF)}°`;
-
   let highTemp = document.querySelector("#high-temp");
   highTemp.innerHTML = `${Math.round(highF)}°`;
-
   let lowTemp = document.querySelector("#low-temp");
   lowTemp.innerHTML = `${Math.round(lowF)}°`;
 }
@@ -187,13 +177,8 @@ function displayCelsiusTemperature(event) {
   farenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsius);
-
-  let feelsLikeTemp = document.querySelector("#feels-like");
-  feelsLikeTemp.innerHTML = `${Math.round(feelsLikeC)}°`;
-
   let highTemp = document.querySelector("#high-temp");
   highTemp.innerHTML = `${Math.round(highC)}°`;
-
   let lowTemp = document.querySelector("#low-temp");
   lowTemp.innerHTML = `${Math.round(lowC)}°`;
 }
