@@ -65,10 +65,15 @@ let highF = 0;
 let highC = 0;
 let lowF = 0;
 let lowC = 0;
-
+let mph = 0;
+let kmph = 0;
 //farenheit to celsius conversion calculation
 function ftoC(F) {
   return (F - 32) * (5 / 9);
+}
+
+function miletokm(miles) {
+  return miles * 1.609344;
 }
 //********HOMEWORK - SEARCH RESULT********
 //Start search bar city search & change location on card
@@ -87,9 +92,10 @@ function updateForecast(response) {
   let condition = document.querySelector("#condition");
   condition.innerHTML = response.data.weather[0].description;
   //update wind speed
+  mph = Math.round(response.data.wind.speed);
+  kmph = miletokm(mph);
   let windSpeed = document.querySelector("#wind-speed");
-  windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
-  console.log(windSpeed);
+  windSpeed.innerHTML = `${Math.round(mph)}`;
   //update high temperature
   highF = Math.round(response.data.main.temp_max);
   highC = ftoC(highF);
@@ -99,6 +105,9 @@ function updateForecast(response) {
   lowF = Math.round(response.data.main.temp_min);
   let lowTemp = document.querySelector("#low-temp");
   lowTemp.innerHTML = `${lowF}°`;
+  //resets conversions links to Farenheit as default
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
 }
 
 function searchForecast(city) {
@@ -109,7 +118,7 @@ function searchForecast(city) {
   axios.get(apiUrl).then(updateForecast);
 }
 
-searchForecast("Atlanta"); //search on load
+//searchForecast("Atlanta"); //search on load
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -168,6 +177,8 @@ function displayFarenheitTemperature(event) {
   highTemp.innerHTML = `${Math.round(highF)}°`;
   let lowTemp = document.querySelector("#low-temp");
   lowTemp.innerHTML = `${Math.round(lowF)}°`;
+  let windSpeed = document.querySelector("#wind-speed");
+  windSpeed.innerHTML = `${Math.round(mph)}`;
 }
 //Celsius coversion link
 function displayCelsiusTemperature(event) {
@@ -181,6 +192,8 @@ function displayCelsiusTemperature(event) {
   highTemp.innerHTML = `${Math.round(highC)}°`;
   let lowTemp = document.querySelector("#low-temp");
   lowTemp.innerHTML = `${Math.round(lowC)}°`;
+  let windSpeed = document.querySelector("#wind-speed");
+  windSpeed.innerHTML = `${Math.round(kmph)}`;
 }
 //when Farenheit or Celsius link is clicked, convert temp
 let farenheitLink = document.querySelector("#farenheit-link");
