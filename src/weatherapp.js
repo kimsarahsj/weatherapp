@@ -91,6 +91,12 @@ function updateForecast(response) {
   //update conditions
   let condition = document.querySelector("#condition");
   condition.innerHTML = response.data.weather[0].description;
+  //Update icon based on weather condition
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   //update wind speed
   mph = Math.round(response.data.wind.speed);
   kmph = miletokm(mph);
@@ -118,7 +124,7 @@ function searchForecast(city) {
   axios.get(apiUrl).then(updateForecast);
 }
 
-//searchForecast("Atlanta"); //search on load
+searchForecast("Atlanta"); //search on load
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -159,7 +165,7 @@ function updatePage(response) {
   let highTemp = document.querySelector("#high-temp");
   highTemp.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
   let lowTemp = document.querySelector("#low-temp");
-  lowTemp.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
+  lowTemp.innerHTML = `${Math.round(response.data.main.temp_min)}°`;
 }
 let currentCityBtn = document.querySelector("#locationBtn");
 currentCityBtn.addEventListener("click", getCurrentPosition);
