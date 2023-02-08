@@ -4,6 +4,9 @@ body {
     rgb(255, 208, 253) 0%,
     rgb(255, 237, 216) 90%
   );
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
 }
 br {
   max-height: 5px;
@@ -18,7 +21,7 @@ li {
   text-align: left;
 }
 .container {
-  padding: 65px 12px 49px 12px;
+  padding: 65px 12px 12px 12px;
 }
 .card {
   border-width: 3px;
