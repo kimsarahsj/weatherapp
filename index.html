@@ -96,18 +96,18 @@
           <!--End Line Break-->
           <!-- Start City-->
           <div class="row">
-            <div class="col-10 city" id="location">Atlanta</div>
+            <div class="col-10 city" id="location"></div>
           </div>
           <!-- End City-->
           <!-- Start Forecast-->
           <div class="row">
-            <div class="col-3 body-text" id="condition">clear</div>
+            <div class="col-3 body-text" id="condition"></div>
           </div>
           <!-- End Forecast-->
           <!-- Start today's weather information-->
           <div class="row d-flex">
             <div class="col-4">
-              <span class="temperature" id="temperature">48</span>
+              <span class="temperature" id="temperature"></span>
               <span class="units">
                 <a
                   href="#"
@@ -139,13 +139,13 @@
 
               <div class="row body-text align-right">
                 High
-                <div class="col align-right" id="high-temp">56°</div>
+                <div class="col align-right" id="high-temp"></div>
                 <div class="col align-left" id="degree"></div>
               </div>
 
               <div class="row body-text align-right">
                 Low
-                <div class="col align-right" id="low-temp">30°</div>
+                <div class="col align-right" id="low-temp"></div>
                 <div class="col align-left" id="degree"></div>
               </div>
               <!---->
@@ -154,100 +154,9 @@
           <!-- End weather details rows inside column-->
         </div>
         <!-- End today's weather informaion-->
-        <!-- Start next 5-days-->
-        <div class="five-day-forecast">
-          <div class="container text-center">
-            <div class="row row-cols-5">
-              <div class="col day-text" id="day-1-date">Sat</div>
-              <div class="col day-text" id="day-2-date">Sun</div>
-              <div class="col day-text" id="day-3-date">Mon</div>
-              <div class="col day-text" id="day-4-date">Tue</div>
-              <div class="col day-text" id="day-5-date">Wed</div>
+            <div class="weather-forecast" id="forecast">
+              <!--Keep one version of the forecast code and use JS to inject the other days-->
             </div>
-            <!-- End next 5-days-->
-            <!-- Start 5 day weather images-->
-            <div class="row">
-              <div class="col">
-                <img
-                  src="images/raincloud.svg"
-                  class="weather-icons"
-                  id="day-1-image"
-                />
-              </div>
-              <div class="col">
-                <img
-                  src="images/sunny.svg"
-                  class="weather-icons"
-                  id="day-2-image"
-                />
-              </div>
-              <div class="col">
-                <img
-                  src="images/raincloud.svg"
-                  class="weather-icons"
-                  id="day-3-image"
-                />
-              </div>
-              <div class="col">
-                <img
-                  src="images/smilecloud.svg"
-                  class="weather-icons"
-                  id="day-4-image"
-                />
-              </div>
-              <div class="col">
-                <img
-                  src="images/thundercloud.svg"
-                  class="weather-icons"
-                  id="day-5-image"
-                />
-              </div>
-            </div>
-            <!-- End 5 day weather images-->
-            <!-- Start 5 highs and lows-->
-            <div class="row" row-col-5>
-              <div class="col body-text">
-                <span id="day-1-high">62</span>° /<span
-                  class="low-temp"
-                  id="day-1-low"
-                  >42</span
-                >°
-              </div>
-              <div class="col body-text">
-                <span id="day-2-high">59</span>° /<span
-                  class="low-temp"
-                  id="day-2-low"
-                >
-                  42</span
-                >°
-              </div>
-              <div class="col body-text">
-                <span id="day-3-high">54</span>° /<span
-                  class="low-temp"
-                  id="day-3-low"
-                >
-                  34</span
-                >°
-              </div>
-              <div class="col body-text">
-                <span id="day-4-high">57</span>° /<span
-                  class="low-temp"
-                  id="day-4-low"
-                >
-                  37</span
-                >°
-              </div>
-              <div class="col body-text">
-                <span id="day-5-high">61</span>° /<span
-                  class="low-temp"
-                  id="day-5-low"
-                >
-                  42</span
-                >°
-              </div>
-            </div>
-            <!-- Start 5 highs and lows-->
-          </div>
         </div>
       </div>
     </div>
