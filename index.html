@@ -80,9 +80,9 @@
             <div class="col-3 body-text">today's weather</div>
             <div class="row">
               <div class="col-8 body-text">
-                <span id="day"></span> | <span id="month">jan</span>
+                <span id="day"></span> | <span id="month">j</span>
                 <span id="date"></span> |<span class="subtle"> updated:</span>
-                <span id="hour">9</span>:<span id="minute">00</span>
+                <span id="hour">9</span>:<span id="minute"></span>
               </div>
             </div>
           </div>
@@ -123,40 +123,21 @@
             </div>
 
             <div class="col-3">
-              <img
-                src="http://openweathermap.org/img/wn/10d@2x.png"
-                class="main-image"
-                id="icon"
-              />
+              <img src="" class="main-image" id="icon" />
             </div>
             <!-- Start weather details rows inside column-->
             <div class="col-5">
-              <div class="row body-text align-right" id="speed">
-                Wind Speed
-                <div class="col align-right" id="wind-speed"></div>
-                <div class="col align-left"></div>
-              </div>
-
-              <div class="row body-text align-right">
-                High
-                <div class="col align-right" id="high-temp"></div>
-                <div class="col align-left" id="degree"></div>
-              </div>
-
-              <div class="row body-text align-right">
-                Low
-                <div class="col align-right" id="low-temp"></div>
-                <div class="col align-left" id="degree"></div>
-              </div>
-              <!---->
+              <ul>
+                <li id="high-temp"></li>
+                <li id="low-temp"></li>
+                <li id="wind-speed"></li>
+              </ul>
             </div>
+
+            <!-- End weather details rows inside column-->
           </div>
-          <!-- End weather details rows inside column-->
-        </div>
-        <!-- End today's weather informaion-->
-            <div class="weather-forecast" id="forecast">
-              <!--Keep one version of the forecast code and use JS to inject the other days-->
-            </div>
+          <!-- End today's weather informaion-->
+          <div class="weather-forecast" id="forecast"></div>
         </div>
       </div>
     </div>
