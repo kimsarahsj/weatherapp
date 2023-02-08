@@ -46,12 +46,21 @@ if (hours > 12) {
   ampm = "pm";
   hours = hours - 12;
 }
+if (hours == 12) {
+  ampm = "pm";
+}
 todayHour.innerHTML = `${hours}`;
 // ampm logic saying if the value of hours is greater than 12 to subtract 12 and add pm
 //End get Hour
 //Start get Minutes
 let todayMinute = document.querySelector("#minute");
 let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = "0" + minutes;
+  if (minutes == 0) {
+    minutes = "00";
+  }
+}
 todayMinute.innerHTML = `${minutes} ${ampm}`;
 //appended ampm to minutes since not defined in html
 //End get Minutes
