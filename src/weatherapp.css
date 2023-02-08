@@ -96,6 +96,13 @@ li {
   letter-spacing: 6px;
   text-transform: uppercase;
 }
+.five-day-forecast {
+  display: block;
+  margin: 0 auto;
+}
+.weather-forecast-temperature-min {
+  color: gray;
+}
 .text-center {
   padding: 0px 30px 50px 30px;
 
