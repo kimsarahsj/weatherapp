@@ -125,8 +125,8 @@ function handleSubmit(event) {
   searchForecast(cityInputElement.value);
 }
 
-let button = document.querySelector("button");
-button.addEventListener("click", handleSubmit);
+let button = document.querySelector("#search-form");
+button.addEventListener("submit", handleSubmit);
 
 //End search bar city search & change location on card
 
@@ -161,6 +161,8 @@ function updatePage(response) {
   lowTemp.innerHTML = `low ${Math.round(response.data.main.temp_min)} °F`;
   let windSpeed = document.querySelector("#wind-speed");
   windSpeed.innerHTML = `wind speed ${Math.round(mph)} mph`;
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
 }
 let currentCityBtn = document.querySelector("#locationBtn");
 currentCityBtn.addEventListener("click", getCurrentPosition);
