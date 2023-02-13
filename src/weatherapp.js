@@ -1,5 +1,5 @@
 //Start setting temperature variables.
-let farenheit = 0;
+let fahrenheit = 0;
 let celsius = 0;
 let feelsLikeF = 0;
 let feelsLikeC = 0;
@@ -9,7 +9,61 @@ let lowF = 0;
 let lowC = 0;
 let mph = 0;
 let kmph = 0;
-//farenheit to celsius conversion calculation
+//Arry of object with objects to store each forecast day's temperature
+let fiveDay = [
+  {
+    fahrenheit: {
+      high: 0,
+      low: 0,
+    },
+    celsius: {
+      high: 0,
+      low: 0,
+    },
+  },
+  {
+    fahrenheit: {
+      high: 0,
+      low: 0,
+    },
+    celsius: {
+      high: 0,
+      low: 0,
+    },
+  },
+  {
+    fahrenheit: {
+      high: 0,
+      low: 0,
+    },
+    celsius: {
+      high: 0,
+      low: 0,
+    },
+  },
+  {
+    fahrenheit: {
+      high: 0,
+      low: 0,
+    },
+    celsius: {
+      high: 0,
+      low: 0,
+    },
+  },
+  {
+    fahrenheit: {
+      high: 0,
+      low: 0,
+    },
+    celsius: {
+      high: 0,
+      low: 0,
+    },
+  },
+];
+
+//fahrenheit to celsius conversion calculation
 function ftoC(F) {
   return (F - 32) * (5 / 9);
 }
@@ -26,10 +80,10 @@ function updateForecast(response) {
   let cityLocation = document.querySelector("#location");
   cityLocation.innerHTML = response.data.name;
   //update temperature
-  farenheit = Math.round(response.data.main.temp);
-  celsius = ftoC(farenheit);
+  fahrenheit = Math.round(response.data.main.temp);
+  celsius = ftoC(fahrenheit);
   let todaysTemperature = document.querySelector("#temperature");
-  todaysTemperature.innerHTML = `${farenheit}`;
+  todaysTemperature.innerHTML = `${fahrenheit}`;
   //update conditions
   let condition = document.querySelector("#condition");
   condition.innerHTML = response.data.weather[0].description;
@@ -51,11 +105,12 @@ function updateForecast(response) {
   highTemp.innerHTML = `high ${highF}°F`;
   //update low temperature
   lowF = Math.round(response.data.main.temp_min);
+  lowC = ftoC(lowF);
   let lowTemp = document.querySelector("#low-temp");
-  lowTemp.innerHTML = `how ${lowF}°F`;
-  //resets conversions links to Farenheit as default
+  lowTemp.innerHTML = `low ${lowF}°F`;
+  //resets conversions links to fahrenheit as default
   celsiusLink.classList.remove("active");
-  farenheitLink.classList.add("active");
+  fahrenheitLink.classList.add("active");
   getForecast(response.data.coord);
 }
 
@@ -69,12 +124,14 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
+      fiveDay[index].fahrenheit.high = Math.round(forecastDay.temp.max);
+      fiveDay[index].fahrenheit.low = Math.round(forecastDay.temp.min);
+      fiveDay[index].celsius.high = Math.round(ftoC(forecastDay.temp.max));
+      fiveDay[index].celsius.low = Math.round(ftoC(forecastDay.temp.min));
       forecastHTML =
         forecastHTML +
         `
@@ -88,24 +145,22 @@ function displayForecast(response) {
           width="42"
         />
         <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-max"> ${Math.round(
-            forecastDay.temp.max
-          )}° </span> |
-          <span class="weather-forecast-temperature-min"> ${Math.round(
-            forecastDay.temp.min
-          )}° </span>
+          <span id="day-${index}-max" class="weather-forecast-temperature-max">${Math.round(
+          forecastDay.temp.max
+        )}°  </span> |
+          <span id="day-${index}-min" class="weather-forecast-temperature-min"> ${Math.round(
+          forecastDay.temp.min
+        )}° </span>
         </div>
       </div>
   `;
     }
   });
-
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "fe1483f743b581b5520a1b725af03a49";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
@@ -152,7 +207,6 @@ function updatePage(response) {
   let todaysTemperature = document.querySelector("#temperature");
   todaysTemperature.innerHTML = `${temperature}°`;
   let latLongCity = response.data.name;
-  console.log(latLongCity);
   let currentLocation = document.querySelector("#location");
   currentLocation.innerHTML = `${latLongCity}`;
   let highTemp = document.querySelector("#high-temp");
@@ -162,45 +216,59 @@ function updatePage(response) {
   let windSpeed = document.querySelector("#wind-speed");
   windSpeed.innerHTML = `wind speed ${Math.round(mph)} mph`;
   celsiusLink.classList.remove("active");
-  farenheitLink.classList.add("active");
+  fahrenheitLink.classList.add("active");
 }
 let currentCityBtn = document.querySelector("#locationBtn");
 currentCityBtn.addEventListener("click", getCurrentPosition);
 //End update the current temperature with current temp data when current location button is clicked.
 
-//Farenheit coversion link
-function displayFarenheitTemperature(event) {
+//fahrenheit coversion link
+function displayfahrenheitTemperature(event) {
   event.preventDefault();
   //add or remove active class
   celsiusLink.classList.remove("active");
-  farenheitLink.classList.add("active");
+  fahrenheitLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(farenheit);
+  temperatureElement.innerHTML = Math.round(fahrenheit);
   let highTemp = document.querySelector("#high-temp");
   highTemp.innerHTML = `high ${Math.round(highF)} °F`;
   let lowTemp = document.querySelector("#low-temp");
   lowTemp.innerHTML = `low ${Math.round(lowF)} °F`;
   let windSpeed = document.querySelector("#wind-speed");
   windSpeed.innerHTML = `wind speed ${Math.round(mph)} mph`;
+  //5-day forecast
+  for (let i = 0; i < 5; i++) {
+    let fiveDayHigh = document.querySelector(`#day-${i}-max`);
+    let fiveDayLow = document.querySelector(`#day-${i}-min`);
+    fiveDayHigh.innerHTML = fiveDay[i].fahrenheit.high + `°`;
+    fiveDayLow.innerHTML = fiveDay[i].fahrenheit.low + `°`;
+  }
 }
 //Celsius coversion link
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   //add or remove active class
   celsiusLink.classList.add("active");
-  farenheitLink.classList.remove("active");
+  fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsius);
   let highTemp = document.querySelector("#high-temp");
-  highTemp.innerHTML = `High ${Math.round(highC)} °C`;
+  highTemp.innerHTML = `high ${Math.round(highC)} °C`;
   let lowTemp = document.querySelector("#low-temp");
-  lowTemp.innerHTML = `Low ${Math.round(lowC)} °C`;
+  lowTemp.innerHTML = `low ${Math.round(lowC)} °C`;
   let windSpeed = document.querySelector("#wind-speed");
-  windSpeed.innerHTML = `Wind Speed ${Math.round(kmph)} kmph`;
+  windSpeed.innerHTML = `wind speed ${Math.round(kmph)} kmph`;
+  //5-day forecast
+  for (let i = 0; i < 5; i++) {
+    let fiveDayHigh = document.querySelector(`#day-${i}-max`);
+    let fiveDayLow = document.querySelector(`#day-${i}-min`);
+    fiveDayHigh.innerHTML = fiveDay[i].celsius.high + `°`;
+    fiveDayLow.innerHTML = fiveDay[i].celsius.low + `°`;
+  }
 }
-//when Farenheit or Celsius link is clicked, convert temp
-let farenheitLink = document.querySelector("#farenheit-link");
-farenheitLink.addEventListener("click", displayFarenheitTemperature);
+//when fahrenheit or Celsius link is clicked, convert temp
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayfahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);

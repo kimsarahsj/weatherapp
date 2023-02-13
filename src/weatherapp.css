@@ -103,7 +103,11 @@ li {
   display: block;
   margin: 0 auto;
 }
+.weather-forecast-temperature-max {
+  text-align: center;
+}
 .weather-forecast-temperature-min {
+  text-align: center;
   color: gray;
 }
 .text-center {
